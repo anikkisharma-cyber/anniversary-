@@ -3,13 +3,19 @@
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 
-canvas.width = innerWidth
-canvas.height = innerHeight
+canvas.style.width = "100vw";
+canvas.style.height = "100vh";
 
-window.addEventListener("resize", function() {
+function resizeCanvas() {
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;     
-    init()
+    canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+
+window.addEventListener("resize", function () {
+    resizeCanvas();
+    init();
 });
 
 /*
