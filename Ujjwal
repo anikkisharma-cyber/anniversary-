@@ -15,25 +15,49 @@ canvas {
     z-index: 0;
 }
 
-#typeDiv {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 80%;
-	text-align: center;
-	z-index: 10;
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    background: black;
 }
 
-#txt1 {
-	font-size: 22px;
-	text-align: center;
-	color: white;
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
 }
-#txt2 {
-	font-size: 16px;
-	text-align: center;
-	color: white;
+
+/* FORCE ALL CONTENT INTO SCREEN */
+#content, #typeDiv, #imgTxt, #heartTxt {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+/* POSITION EACH SECTION */
+#content {
+    top: 5%;
+}
+
+#imgTxt {
+    top: 20%;
+}
+
+#typeDiv {
+    top: 65%;
+    width: 80%;
+    text-align: center;
+    line-height: 1.8;
+}
+
+#heartTxt {
+    bottom: 5%;
 }
 
 #content{
