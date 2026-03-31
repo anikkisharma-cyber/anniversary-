@@ -141,6 +141,24 @@ var imageArray = [
 "images/pic13.jpeg","images/pic14.jpeg","images/pic15.jpeg","images/pic16.jpeg"
 ];
 
+  function play() {
+document.getElementById("heartTxt").style.display = "none";
+
+let i = 0;
+
+function showNext() {
+if (i < imageArray.length) {
+document.getElementById("img").src = imageArray[i];
+document.getElementById("Txt").innerHTML = txtArray[i];
+i++;
+setTimeout(showNext, 2000); // change speed here
+}
+}
+
+showNext();
+}
+
+
 var imageIndex = 0;
 
 /* 💖 YOUR TEXT (kept your vibe) */
