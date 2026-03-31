@@ -9,7 +9,8 @@
 <link rel="stylesheet" type="text/css" href="format.css">
 
 <style>
-/* ⭐ BACKGROUND CANVAS */
+
+/* ⭐ BACKGROUND */
 canvas {
   position: fixed;
   top: 0;
@@ -28,16 +29,15 @@ body {
   overflow-x: hidden;
 }
 
-/* 💌 MAIN CONTENT FIX */
-#imgTxt, #heartTxt, #content, #typeDiv {
+/* 💌 IMAGE + TEXT CENTER */
+#imgTxt {
   position: relative;
   z-index: 2;
   text-align: center;
-  max-width: 90%;
-  margin: 20px auto;
+  margin-top: 80px;
 }
 
-/* 🖼 IMAGE FIX */
+/* 🖼 IMAGE */
 #img {
   width: 250px;
   max-width: 90%;
@@ -45,36 +45,88 @@ body {
   border-radius: 15px;
 }
 
-/* 💬 TEXT FIX */
+/* 💬 TEXT */
 #Txt, #tmp, #txt1, #txt2 {
   display: block;
   word-wrap: break-word;
   line-height: 1.6;
   font-size: 18px;
+  max-width: 90%;
+  margin: auto;
 }
 
-/* ❤️ BUTTON CENTER */
+/* ❤️ HEART BUTTON */
+#heartTxt {
+  position: fixed;
+  bottom: 120px;
+  width: 100%;
+  text-align: center;
+  z-index: 3;
+}
+
 #heart {
   display: flex;
   justify-content: center;
   margin-top: 10px;
 }
 
-/* ⏳ TIMER FIX */
+#button {
+  width: 70px;
+  height: 70px;
+  background-color: red;
+  border: none;
+  transform: rotate(45deg);
+  position: relative;
+  cursor: pointer;
+}
+
+#button::before,
+#button::after {
+  content: "";
+  width: 70px;
+  height: 70px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+}
+
+#button::before {
+  top: -35px;
+  left: 0;
+}
+
+#button::after {
+  left: -35px;
+  top: 0;
+}
+
+/* ⏳ TIMER */
 #content {
+  position: relative;
+  z-index: 2;
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* 💌 TYPE TEXT */
+#typeDiv {
+  position: relative;
+  z-index: 2;
+  text-align: center;
   margin-top: 30px;
 }
 
-/* 📱 RESPONSIVE */
+/* 📱 MOBILE */
 @media (max-width: 600px) {
   #img {
     width: 180px;
   }
 
-  #Txt, #tmp, #txt1, #txt2 {
+  #Txt, #txt1, #txt2 {
     font-size: 16px;
   }
 }
+
 </style>
 
 </head>
@@ -99,10 +151,10 @@ body {
   <img id="img" src="">
 </div>
 
-<!-- ❤️ CLICK HEART -->
+<!-- ❤️ HEART -->
 
 <div id="heartTxt">
-  <span id="clickMe">Click!</span>
+  <span id="clickMe">Click ❤️</span>
   <div id="heart">
     <button id="button" onclick="play()"></button>
   </div>
@@ -120,7 +172,7 @@ body {
   </div>
 </div>
 
-<!-- 💌 TYPING TEXT -->
+<!-- 💌 TYPE TEXT -->
 
 <div id="typeDiv">
   <span id="txt1"></span><br>
@@ -128,12 +180,10 @@ body {
 </div>
 
 <script>
-var ok = 0;
-var flag = 1;
 var myImage = document.getElementById("img");
 var myTxt = document.getElementById("Txt");
 
-/* 📸 MAKE SURE PATH IS CORRECT */
+/* 📸 IMAGE PATH (make sure folder is correct) */
 var imageArray = [
 "images/pic1.jpeg","images/pic2.jpeg","images/pic3.jpeg","images/pic4.jpeg",
 "images/pic5.jpeg","images/pic6.jpeg","images/pic7.jpeg","images/pic8.jpeg",
@@ -141,27 +191,7 @@ var imageArray = [
 "images/pic13.jpeg","images/pic14.jpeg","images/pic15.jpeg","images/pic16.jpeg"
 ];
 
-  function play() {
-document.getElementById("heartTxt").style.display = "none";
-
-let i = 0;
-
-function showNext() {
-if (i < imageArray.length) {
-document.getElementById("img").src = imageArray[i];
-document.getElementById("Txt").innerHTML = txtArray[i];
-i++;
-setTimeout(showNext, 2000); // change speed here
-}
-}
-
-showNext();
-}
-
-
-var imageIndex = 0;
-
-/* 💖 YOUR TEXT (kept your vibe) */
+/* 💖 TEXT */
 var txtArray = [
 "Hi Ujjwal ❤️",
 "I still remember how everything started with you…",
@@ -181,9 +211,26 @@ var txtArray = [
 "I love you, Ujjwal"
 ];
 
-var len = imageArray.length;
-var t = 0;
+/* ❤️ CLICK FUNCTION */
+function play() {
+  document.getElementById("heartTxt").style.display = "none";
+
+  let i = 0;
+
+  function showNext() {
+    if (i < imageArray.length) {
+      myImage.src = imageArray[i];
+      myTxt.innerHTML = txtArray[i];
+      i++;
+      setTimeout(showNext, 2000);
+    }
+  }
+
+  showNext();
+}
 </script>
+
+<!-- ✅ KEEP THESE -->
 
 <script src="date.js"></script>
 
@@ -191,7 +238,9 @@ var t = 0;
 
 <script src="typeWriter.js"></script>
 
-<script src="playImg.js"></script>
+<!-- ❌ REMOVE THIS (you don’t have it) -->
+
+<!-- <script src="playImg.js"></script> -->
 
 </body>
 </html>
