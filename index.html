@@ -1,53 +1,151 @@
 <!DOCTYPE HTML>
+
 <html lang="en">
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-		<meta charset="UTF-8">
-		<title>Happy Fourth Anniversary</title>
-	<link rel="stylesheet" type="text/css" href="format.css">
-	</head>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Happy Fourth Anniversary</title>
 
-	<body style="margin:0px">
-		<audio autoplay loop>
-			<source src="music/music.mp3" type="audio/mpeg">
-				</audio>
-		<canvas></canvas>
-		<div id="imgTxt">
-			<span id="Txt"></span> <br />
-			<span id="tmp"></span>
-			<img id="img" src="">
-		</div>
-		<div id="heartTxt">
-			<span id="clickMe">Click!</span>
-			<div id="heart">
-				<button id="button" onclick="play()"></button>
-			</div>
-		</div>
-		<div id="content">
-			<h2 id="together">We have been together</h2>
-			<div id="timer">
-				<b id="d"></b> Days 
-				<b id="h"></b> Hours
-				<b id="m"></b> Minutes
-				<b id="s"></b> Seconds
-			</div>
-		</div>
+<link rel="stylesheet" type="text/css" href="format.css">
 
-    	<div id="typeDiv">
-    <span id="txt1"></span><br>
-    <span id="txt2"></span>
-</div>	
+<style>
+/* ⭐ BACKGROUND CANVAS */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
 
-		<script >
-			var ok = 0;
-			var flag = 1;
-			var myImage = document.getElementById("img");
-			var myTxt = document.getElementById("Txt");
-			var imageArray = ["pic1.jpeg", "pic2.jpeg", "pic3.jpeg", "pic4.jpeg", "pic5.jpeg", "pic6.jpeg", 
-			"pic7.jpeg", "pic8.jpeg", "pic9.jpeg", "pic10.jpeg", "pic11.jpeg", "pic12.jpeg", "pic13.jpeg",
-			"pic14.jpeg", "pic15.jpeg", "pic16.jpeg"];
-			var imageIndex = 0;
-			var txtArray = ["Hi Ujjwal ❤️",
+/* 💖 BODY */
+body {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* 💌 MAIN CONTENT FIX */
+#imgTxt, #heartTxt, #content, #typeDiv {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 90%;
+  margin: 20px auto;
+}
+
+/* 🖼 IMAGE FIX */
+#img {
+  width: 250px;
+  max-width: 90%;
+  margin-top: 20px;
+  border-radius: 15px;
+}
+
+/* 💬 TEXT FIX */
+#Txt, #tmp, #txt1, #txt2 {
+  display: block;
+  word-wrap: break-word;
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+/* ❤️ BUTTON CENTER */
+#heart {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* ⏳ TIMER FIX */
+#content {
+  margin-top: 30px;
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width: 600px) {
+  #img {
+    width: 180px;
+  }
+
+  #Txt, #tmp, #txt1, #txt2 {
+    font-size: 16px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- 🎵 MUSIC -->
+
+<audio autoplay loop>
+  <source src="music/music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ⭐ BACKGROUND -->
+
+<canvas></canvas>
+
+<!-- 💖 IMAGE + TEXT -->
+
+<div id="imgTxt">
+  <span id="Txt"></span><br />
+  <span id="tmp"></span>
+  <img id="img" src="">
+</div>
+
+<!-- ❤️ CLICK HEART -->
+
+<div id="heartTxt">
+  <span id="clickMe">Click!</span>
+  <div id="heart">
+    <button id="button" onclick="play()"></button>
+  </div>
+</div>
+
+<!-- ⏳ TIMER -->
+
+<div id="content">
+  <h2 id="together">We have been together</h2>
+  <div id="timer">
+    <b id="d"></b> Days 
+    <b id="h"></b> Hours
+    <b id="m"></b> Minutes
+    <b id="s"></b> Seconds
+  </div>
+</div>
+
+<!-- 💌 TYPING TEXT -->
+
+<div id="typeDiv">
+  <span id="txt1"></span><br>
+  <span id="txt2"></span>
+</div>
+
+<script>
+var ok = 0;
+var flag = 1;
+var myImage = document.getElementById("img");
+var myTxt = document.getElementById("Txt");
+
+/* 📸 MAKE SURE PATH IS CORRECT */
+var imageArray = [
+"images/pic1.jpeg","images/pic2.jpeg","images/pic3.jpeg","images/pic4.jpeg",
+"images/pic5.jpeg","images/pic6.jpeg","images/pic7.jpeg","images/pic8.jpeg",
+"images/pic9.jpeg","images/pic10.jpeg","images/pic11.jpeg","images/pic12.jpeg",
+"images/pic13.jpeg","images/pic14.jpeg","images/pic15.jpeg","images/pic16.jpeg"
+];
+
+var imageIndex = 0;
+
+/* 💖 YOUR TEXT (kept your vibe) */
+var txtArray = [
+"Hi Ujjwal ❤️",
 "I still remember how everything started with you…",
 "From random conversations to becoming my favourite person",
 "I didn’t realize when you became my habit",
@@ -62,14 +160,20 @@
 "And I can’t wait for everything that’s coming ahead",
 "Still stuck with me 😏",
 "Happy 4 years, my love ❤️",
-"I love you, Ujjwal"];
-			 var len = imageArray.length;
-			var t = 0;
-		</script>
-		
-		<script src="date.js"></script>
-        <script src="stars.js"></script>
-        <script src="typeWriter.js"></script>
-        <script src="playImg.js"></script>
-	</body>
+"I love you, Ujjwal"
+];
+
+var len = imageArray.length;
+var t = 0;
+</script>
+
+<script src="date.js"></script>
+
+<script src="stars.js"></script>
+
+<script src="typeWriter.js"></script>
+
+<script src="playImg.js"></script>
+
+</body>
 </html>
